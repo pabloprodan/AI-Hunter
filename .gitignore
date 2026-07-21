@@ -46,6 +46,16 @@ everything-claude-code/
 open-cowork/
 whatsapp-agentkit/
 
+# Database
+*.db
+*.db-wal
+*.db-shm
+drizzle/
+
+# Playwright
+test-results/
+playwright-report/
+
 # Misc
 *.tsbuildinfo
 .eslintcache

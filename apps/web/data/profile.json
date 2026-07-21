@@ -1,0 +1,33 @@
+{
+  "name": "Freelancer",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+    "Python"
+  ],
+  "hourlyRate": {
+    "min": 50,
+    "max": 150
+  },
+  "platforms": [
+    "Upwork",
+    "LinkedIn",
+    "Fiverr",
+    "Toptal"
+  ],
+  "keywords": [
+    "react",
+    "full stack",
+    "frontend",
+    "typescript",
+    "next.js"
+  ],
+  "excludedKeywords": [
+    "wordpress",
+    "php",
+    "shopify",
+    "wix"
+  ]
+}

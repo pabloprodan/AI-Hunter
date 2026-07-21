@@ -1,6 +1,6 @@
 'use client';
 
-import { KanbanBoard } from '@ai-hunter/ui';
+import { KanbanBoard, ScoutPanel } from '@ai-hunter/ui';
 
 export default function DashboardPage() {
   return (
@@ -39,14 +39,8 @@ export default function DashboardPage() {
 
         <KanbanBoard />
 
-        <div className="mt-8 bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">AI Scout</h2>
-          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-            <p className="text-sm text-gray-600">
-              <span className="font-medium text-indigo-600">AI Hunter</span> found 3 new opportunities matching your profile since yesterday.
-              <button className="ml-2 text-indigo-600 hover:text-indigo-700 font-medium">Review them →</button>
-            </p>
-          </div>
+        <div className="mt-8">
+          <ScoutPanel />
         </div>
       </main>
     </div>
