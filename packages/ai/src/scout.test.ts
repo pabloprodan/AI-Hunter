@@ -14,7 +14,7 @@ const profile: UserProfile = {
 
 describe('ScoutEngine', () => {
   it('returns opportunities with match scores', async () => {
-    const engine = new ScoutEngine();
+    const engine = new ScoutEngine(profile);
     const matcher = new OpportunityMatcher(profile);
     const results = await engine.scout(matcher);
     expect(results.length).toBeGreaterThanOrEqual(3);
@@ -22,7 +22,7 @@ describe('ScoutEngine', () => {
   });
 
   it('returns opportunities with correct shape', async () => {
-    const engine = new ScoutEngine();
+    const engine = new ScoutEngine(profile);
     const matcher = new OpportunityMatcher(profile);
     const results = await engine.scout(matcher);
     for (const opp of results) {
@@ -37,7 +37,7 @@ describe('ScoutEngine', () => {
   });
 
   it('generates unique ids per call', async () => {
-    const engine = new ScoutEngine();
+    const engine = new ScoutEngine(profile);
     const matcher = new OpportunityMatcher(profile);
     const [batch1, batch2] = await Promise.all([
       engine.scout(matcher),

@@ -8,7 +8,7 @@ export async function POST() {
   const profileStore = new ProfileStore(DATA_DIR);
   const profile = profileStore.get();
   const matcher = new OpportunityMatcher(profile);
-  const engine = new ScoutEngine();
+  const engine = new ScoutEngine(profile);
 
   const opportunities = await engine.scout(matcher);
 
