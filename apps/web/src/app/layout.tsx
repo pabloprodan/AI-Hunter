@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
 
 export const metadata = {
@@ -19,13 +20,15 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className="bg-neutral-50 text-neutral-900 antialiased">
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <link rel="icon" href="/favicon.ico" />
+        </head>
+        <body className="bg-neutral-50 text-neutral-900 antialiased">
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

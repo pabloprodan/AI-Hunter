@@ -1,8 +1,11 @@
 'use client';
 
+import { useUser } from '@clerk/nextjs';
 import { KanbanBoard, ScoutPanel } from '@ai-hunter/ui';
 
 export default function DashboardPage() {
+  const { user } = useUser();
+
   return (
     <div className="min-h-screen bg-gray-50">
       <aside className="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-gray-200 p-6">
@@ -29,12 +32,18 @@ export default function DashboardPage() {
             </a>
           ))}
         </nav>
+        {user && (
+          <div className="absolute bottom-6 left-6 right-6 pt-4 border-t border-gray-200">
+            <p className="text-sm font-medium text-gray-900 truncate">{user.fullName || user.emailAddresses?.[0]?.emailAddress || 'User'}</p>
+            <p className="text-xs text-gray-500 truncate">{user.primaryEmailAddress?.emailAddress}</p>
+          </div>
+        )}
       </aside>
 
       <main className="ml-64 p-8">
         <header className="mb-8">
           <h1 className="text-2xl font-bold text-gray-900">Pipeline</h1>
-          <p className="text-gray-500 mt-1">Drag opportunities between columns to update their status.</p>
+          <p className="text-gray-500 mt-1">Welcome back{user?.firstName ? `, ${user.firstName}` : ''}. Drag opportunities between columns to update their status.</p>
         </header>
 
         <KanbanBoard />

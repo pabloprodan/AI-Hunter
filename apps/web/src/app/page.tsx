@@ -67,8 +67,8 @@ export default function LandingPage() {
             <a href="#pricing" className="hover:text-gray-900">Pricing</a>
           </nav>
           <div className="flex items-center gap-3">
-            <a href="/dashboard" className="text-sm text-gray-600 hover:text-gray-900 px-4 py-2">Sign in</a>
-            <a href="/dashboard" className="text-sm bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 font-medium transition-colors">
+            <a href="/sign-in" className="text-sm text-gray-600 hover:text-gray-900 px-4 py-2">Sign in</a>
+            <a href="/sign-up" className="text-sm bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 font-medium transition-colors">
               Get early access
             </a>
           </div>
@@ -88,7 +88,7 @@ export default function LandingPage() {
           AI Hunter discovers opportunities, writes proposals, and manages your pipeline — so you can focus on delivering great work.
         </p>
         <div className="mt-10 flex items-center justify-center gap-4">
-          <a href="/dashboard" className="bg-indigo-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-indigo-700 transition-colors shadow-sm">
+          <a href="/sign-up" className="bg-indigo-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-indigo-700 transition-colors shadow-sm">
             Start hunting — it&apos;s free
           </a>
           <a href="#pricing" className="border border-gray-300 text-gray-700 px-8 py-3.5 rounded-xl text-base font-medium hover:bg-gray-50 transition-colors">
@@ -164,7 +164,7 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <a href="/dashboard" className={`block text-center px-6 py-3 rounded-xl font-medium transition-colors ${plan.highlighted ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+              <a href="/sign-up" className={`block text-center px-6 py-3 rounded-xl font-medium transition-colors ${plan.highlighted ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
                 {plan.cta}
               </a>
             </div>

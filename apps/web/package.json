@@ -13,6 +13,7 @@
     "@ai-hunter/core": "*",
     "@ai-hunter/types": "*",
     "@ai-hunter/ui": "*",
+    "@clerk/nextjs": "^7.5.22",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

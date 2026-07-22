@@ -5,3 +5,5 @@ export { KanbanBoard } from './KanbanBoard';
 export { PipelineColumn } from './PipelineColumn';
 export { OpportunityCard } from './OpportunityCard';
 export { ScoutPanel } from './ScoutPanel';
+export { ProposalModal } from './ProposalModal';
+export { AutoApplyPanel } from './AutoApplyPanel';

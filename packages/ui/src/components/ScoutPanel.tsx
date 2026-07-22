@@ -5,6 +5,7 @@ import type { Opportunity } from '@ai-hunter/types';
 import { Card, CardHeader, CardTitle, CardDescription } from './Card';
 import { Badge } from './Badge';
 import { Button } from './Button';
+import { ProposalModal } from './ProposalModal';
 
 const sourceColors: Record<string, string> = {
   Upwork: 'bg-green-600',
@@ -18,6 +19,7 @@ export function ScoutPanel() {
   const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState<Set<string>>(new Set());
   const [scoutRun, setScoutRun] = useState(false);
+  const [proposalOpp, setProposalOpp] = useState<Opportunity | null>(null);
 
   const runScout = async () => {
     setLoading(true);
@@ -117,14 +119,22 @@ export function ScoutPanel() {
                       </svg>
                     </span>
                   ) : (
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={() => addToPipeline(opp)}
-                      className="shrink-0 ml-2"
-                    >
-                      Add to Pipeline
-                    </Button>
+                    <div className="flex items-center gap-1 shrink-0 ml-2">
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => setProposalOpp(opp)}
+                      >
+                        Generate Proposal
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => addToPipeline(opp)}
+                      >
+                        Add to Pipeline
+                      </Button>
+                    </div>
                   )}
                 </div>
 
@@ -154,6 +164,13 @@ export function ScoutPanel() {
             );
           })}
         </div>
+      )}
+
+      {proposalOpp && (
+        <ProposalModal
+          opportunity={proposalOpp}
+          onClose={() => setProposalOpp(null)}
+        />
       )}
     </Card>
   );
