@@ -1,13 +1,17 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { KanbanBoard, ScoutPanel } from '@ai-hunter/ui';
 
 export default function DashboardPage() {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50" suppressHydrationWarning>
       <aside className="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-gray-200 p-6">
         <div className="flex items-center gap-2 mb-8">
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
@@ -32,7 +36,7 @@ export default function DashboardPage() {
             </a>
           ))}
         </nav>
-        {user && (
+        {mounted && isLoaded && user && (
           <div className="absolute bottom-6 left-6 right-6 pt-4 border-t border-gray-200">
             <p className="text-sm font-medium text-gray-900 truncate">{user.fullName || user.emailAddresses?.[0]?.emailAddress || 'User'}</p>
             <p className="text-xs text-gray-500 truncate">{user.primaryEmailAddress?.emailAddress}</p>
@@ -43,7 +47,11 @@ export default function DashboardPage() {
       <main className="ml-64 p-8">
         <header className="mb-8">
           <h1 className="text-2xl font-bold text-gray-900">Pipeline</h1>
-          <p className="text-gray-500 mt-1">Welcome back{user?.firstName ? `, ${user.firstName}` : ''}. Drag opportunities between columns to update their status.</p>
+          <p className="text-gray-500 mt-1">
+            {mounted && isLoaded && user?.firstName
+              ? `Welcome back, ${user.firstName}. Drag opportunities between columns to update their status.`
+              : 'Drag opportunities between columns to update their status.'}
+          </p>
         </header>
 
         <KanbanBoard />
